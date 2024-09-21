@@ -10,6 +10,7 @@ public class SecondTasks {
         System.out.println(Arrays.toString(normalizator(numbers)));
         double[] arrNums = {1.6, 0, 212.3, 34.8, 0, 27.5};
         System.out.println(Arrays.toString(compressedNums(arrNums)));
+        System.out.println(camelToSnake("HelloWorld"));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -26,9 +27,9 @@ public class SecondTasks {
    }
 
    public static int dividedByThree(int[] arr) {
-        int lenght = arr.length;
+        int length = arr.length;
         int count = 0;
-        for (int i = 0; i < lenght; i++) {
+        for (int i = 0; i < length; i++) {
             if ((arr[i] % 2 != 0) && (arr[i] % 3) == 0) {
                 count++;
             }
@@ -88,6 +89,20 @@ public class SecondTasks {
     }
     Arrays.sort(compressedArr);
     return compressedArr;
+    }
+
+    public static String camelToSnake(String str) {
+        String[] words = str.split("(?=[A-ZА-Я])");
+        int length = words.length;
+        String newStr = "";
+        for (int i = 0; i < length; i++) {
+            newStr += words[i];
+            if (i < (length - 1)) {
+               newStr += "_"; 
+            }
+        }
+        newStr = newStr.toLowerCase();
+        return newStr;
     }
 
 }
