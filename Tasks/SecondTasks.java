@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class SecondTasks {
     public static void main(String[] args) {
@@ -8,6 +8,8 @@ public class SecondTasks {
         System.out.println(getInitials("simonov sergei evgenievich"));
         double[] numbers = {3.5, 7.0, 1.5, 9.0, 5.5};
         System.out.println(Arrays.toString(normalizator(numbers)));
+        double[] arrNums = {1.6, 0, 212.3, 34.8, 0, 27.5};
+        System.out.println(Arrays.toString(compressedNums(arrNums)));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -67,6 +69,26 @@ public class SecondTasks {
     }
     return normalizedArr;
    }
+
+   public static int[] compressedNums(double[] arr) {
+    int counter = 0;
+    int index = 0;
+    for (double x : arr) {
+        if (x != 0.0) {
+            counter++;
+        }
+    }
+    int[] compressedArr = new int[counter];
+    for (double x : arr) {
+        if (x != 0) {
+            int y = (int) x;
+            compressedArr[index] = y;
+            index++;
+        }
+    }
+    Arrays.sort(compressedArr);
+    return compressedArr;
+    }
 
 }
 
