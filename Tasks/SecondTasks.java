@@ -3,6 +3,7 @@ public class SecondTasks {
         System.out.println(duplicateChars("Barack", "Obama"));
         int[] arr = {3, 12, 7, 81, 52};
         System.out.println(dividedByThree(arr));
+        System.out.println(getInitials("simonov sergei evgenievich"));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -27,5 +28,15 @@ public class SecondTasks {
             }
         }
         return count;
+   }
+
+   public static String getInitials(String str) {
+        String initials = "";
+        String[] parts = str.split(" ");
+        String name = "" + parts[1].toUpperCase().charAt(0);
+        String patronymic = "" + parts[2].toUpperCase().charAt(0);
+        String surname = parts[0].substring(0, 1).toUpperCase() + parts[0].substring(1);
+        initials = String.format("%s. %s. %s", name, patronymic, surname);
+        return initials;
    }
 }
