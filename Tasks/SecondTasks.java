@@ -1,9 +1,13 @@
+import java.util.Arrays;
+
 public class SecondTasks {
     public static void main(String[] args) {
         System.out.println(duplicateChars("Barack", "Obama"));
         int[] arr = {3, 12, 7, 81, 52};
         System.out.println(dividedByThree(arr));
         System.out.println(getInitials("simonov sergei evgenievich"));
+        double[] numbers = {3.5, 7.0, 1.5, 9.0, 5.5};
+        System.out.println(Arrays.toString(normalizator(numbers)));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -39,4 +43,30 @@ public class SecondTasks {
         initials = String.format("%s. %s. %s", name, patronymic, surname);
         return initials;
    }
+
+   public static double[] normalizator(double[] arr) {
+    double min = Double.POSITIVE_INFINITY;
+    double max = Double.NEGATIVE_INFINITY;
+    for (double x : arr) {
+        if (x < min) {
+            min = x;
+        }
+        if (x > max) {
+            max = x;
+        }
+    }
+    int lenght = arr.length;
+    double[] normalizedArr = new double[lenght];
+    for (int i = 0; i < lenght; i++) {
+        if (min == max) {
+            normalizedArr[i] = 0.0;
+        } 
+        else {
+            normalizedArr[i] = (arr[i] - min) / (max - min);
+        }
+    }
+    return normalizedArr;
+   }
+
 }
+
