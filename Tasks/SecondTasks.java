@@ -14,6 +14,7 @@ public class SecondTasks {
         int[] secondArr = {1, 6, 3, 6, 7, 9, 11, 0};
         System.out.println(secondBiggest(secondArr));
         System.out.println(localReverse("Hello, I’m under the water, please help me", 'e'));
+        System.out.println(equals(3, 3, 1));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -140,6 +141,16 @@ public class SecondTasks {
             start = secondMarker + 1;
         }
         return result.toString();
+    }
+
+    public static int equals(int a, int b, int c) {
+        if (a == b && a == c) {
+            return 3;
+        }
+        else if (a != b && b != c) {
+            return 0;
+        }
+        return 2;
     }
 }
 
