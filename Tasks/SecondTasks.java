@@ -15,6 +15,7 @@ public class SecondTasks {
         System.out.println(secondBiggest(secondArr));
         System.out.println(localReverse("Hello, I’m under the water, please help me", 'e'));
         System.out.println(equals(3, 3, 1));
+        System.out.println(isAnagram("Eleven plus two?", "Twelve plus one!"));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -151,6 +152,22 @@ public class SecondTasks {
             return 0;
         }
         return 2;
+    }
+
+    public static boolean isAnagram(String firstString, String secondString) {
+        firstString = firstString.replaceAll("[^\\w]", "").toLowerCase();
+        secondString = secondString.replaceAll("[^\\w]", "").toLowerCase();
+        if (firstString.length() != secondString.length()) {
+            return false;
+        }
+
+        char[] firstArray = firstString.toCharArray();
+        char[] secondArray = secondString.toCharArray();
+
+        Arrays.sort(firstArray);
+        Arrays.sort(secondArray);
+
+        return Arrays.equals(firstArray, secondArray);
     }
 }
 
