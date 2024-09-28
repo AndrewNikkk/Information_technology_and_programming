@@ -11,6 +11,8 @@ public class SecondTasks {
         double[] arrNums = {1.6, 0, 212.3, 34.8, 0, 27.5};
         System.out.println(Arrays.toString(compressedNums(arrNums)));
         System.out.println(camelToSnake("HelloWorld"));
+        int[] secondArr = {1, 6, 3, 6, 7, 9, 11, 0};
+        System.out.println(secondBiggest(secondArr));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -103,6 +105,12 @@ public class SecondTasks {
         }
         newStr = newStr.toLowerCase();
         return newStr;
+    }
+
+    public static int secondBiggest(int[] arr) {
+        Arrays.sort(arr);
+        int length = arr.length;
+        return arr[length - 2];
     }
 
 }
