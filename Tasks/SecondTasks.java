@@ -13,6 +13,7 @@ public class SecondTasks {
         System.out.println(camelToSnake("HelloWorld"));
         int[] secondArr = {1, 6, 3, 6, 7, 9, 11, 0};
         System.out.println(secondBiggest(secondArr));
+        System.out.println(localReverse("Hello, I’m under the water, please help me", 'e'));
     }
 
    public static String duplicateChars(String firstStr, String secondStr) {
@@ -113,5 +114,32 @@ public class SecondTasks {
         return arr[length - 2];
     }
 
+    public static String localReverse(String str, char marker) {
+        StringBuilder result = new StringBuilder();
+        int start = 0;
+
+        while (start < str.length()) {
+            int firstMarker = str.indexOf(marker, start);
+            if (firstMarker == -1) {
+                result.append(str.substring(start));
+                break;
+            }
+
+            result.append(str.substring(start, firstMarker + 1));
+            start = firstMarker + 1;
+
+            int secondMarker = str.indexOf(marker, start);
+            if (secondMarker == -1) {
+                result.append(str.substring(firstMarker + 1));
+                break;
+            }
+            
+            String toReverse = str.substring(firstMarker + 1, secondMarker);
+            result.append(new StringBuilder(toReverse).reverse());
+            result.append(marker);
+            start = secondMarker + 1;
+        }
+        return result.toString();
+    }
 }
 
