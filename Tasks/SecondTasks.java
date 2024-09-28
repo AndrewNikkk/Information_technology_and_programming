@@ -2,16 +2,17 @@ import java.util.*;
 
 public class SecondTasks {
     public static void main(String[] args) {
-        System.out.println(duplicateChars("Barack", "Obama"));
         int[] arr = {3, 12, 7, 81, 52};
+        double[] numbers = {3.5, 7.0, 1.5, 9.0, 5.5};
+        double[] arrNums = {1.6, 0, 212.3, 34.8, 0, 27.5};
+        int[] secondArr = {1, 6, 3, 6, 7, 9, 11, 0};
+
+        System.out.println(duplicateChars("Barack", "Obama"));
         System.out.println(dividedByThree(arr));
         System.out.println(getInitials("simonov sergei evgenievich"));
-        double[] numbers = {3.5, 7.0, 1.5, 9.0, 5.5};
         System.out.println(Arrays.toString(normalizator(numbers)));
-        double[] arrNums = {1.6, 0, 212.3, 34.8, 0, 27.5};
         System.out.println(Arrays.toString(compressedNums(arrNums)));
-        System.out.println(camelToSnake("HelloWorld"));
-        int[] secondArr = {1, 6, 3, 6, 7, 9, 11, 0};
+        System.out.println(camelToSnake("HelloWorld")); 
         System.out.println(secondBiggest(secondArr));
         System.out.println(localReverse("Hello, I’m under the water, please help me", 'e'));
         System.out.println(equals(3, 3, 1));
@@ -55,6 +56,8 @@ public class SecondTasks {
    public static double[] normalizator(double[] arr) {
     double min = Double.POSITIVE_INFINITY;
     double max = Double.NEGATIVE_INFINITY;
+    int lenght = arr.length;
+    
     for (double x : arr) {
         if (x < min) {
             min = x;
@@ -63,7 +66,7 @@ public class SecondTasks {
             max = x;
         }
     }
-    int lenght = arr.length;
+    
     double[] normalizedArr = new double[lenght];
     for (int i = 0; i < lenght; i++) {
         if (min == max) {
