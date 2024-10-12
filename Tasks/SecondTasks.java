@@ -36,7 +36,7 @@ public class SecondTasks {
         int length = arr.length;
         int count = 0;
         for (int i = 0; i < length; i++) {
-            if ((arr[i] % 2 != 0) && (arr[i] % 3) == 0) {
+            if (arr[i] % 2 != 0 && arr[i] % 3 == 0) {
                 count++;
             }
         }
@@ -135,12 +135,12 @@ public class SecondTasks {
 
             int secondMarker = str.indexOf(marker, start);
             if (secondMarker == -1) {
-                result.append(str.substring(firstMarker + 1));
+                result.append(start);
                 break;
             }
-            
-            String toReverse = str.substring(firstMarker + 1, secondMarker);
-            result.append(new StringBuilder(toReverse).reverse());
+
+            String toReverseString = str.substring(start, secondMarker);
+            result.append(new StringBuilder(toReverseString).reverse());
             result.append(marker);
             start = secondMarker + 1;
         }
