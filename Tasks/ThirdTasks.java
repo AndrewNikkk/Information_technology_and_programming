@@ -11,6 +11,8 @@ public class ThirdTasks {
         System.out.println(rps("paper", "rock"));
         System.out.println(bugger(999));
         System.out.println(longestUnique("abcba"));
+        System.out.println(isPrefix("automation", "auto-"));
+        System.out.println(isSuffix("arachnophobia", "-phobia"));
     }
 
     public static boolean isStrangePair(String firstStr, String secondStr) {
@@ -104,4 +106,15 @@ public class ThirdTasks {
         }
         return logest;
     }
+
+public static boolean isPrefix(String word, String prefix) {
+    prefix = prefix.replace("-", "");
+    return word.startsWith(prefix);
+}
+
+public static boolean isSuffix(String word, String suffix) {
+    suffix = suffix.replace("-", "");
+    return word.endsWith(suffix);
+}
+
 }
