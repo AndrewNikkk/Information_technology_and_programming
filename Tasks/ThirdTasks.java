@@ -13,6 +13,7 @@ public class ThirdTasks {
         System.out.println(longestUnique("abcba"));
         System.out.println(isPrefix("automation", "auto-"));
         System.out.println(isSuffix("arachnophobia", "-phobia"));
+        System.out.println(doesBrickFit(1, 1, 1, 1, 1));
     }
 
     public static boolean isStrangePair(String firstStr, String secondStr) {
@@ -115,6 +116,12 @@ public static boolean isPrefix(String word, String prefix) {
 public static boolean isSuffix(String word, String suffix) {
     suffix = suffix.replace("-", "");
     return word.endsWith(suffix);
+}
+
+public static boolean doesBrickFit(int a, int b, int c, int w, int h) {
+    return (a <= w && b <=h) || (a <=h && b <=w) ||
+         (a <= w && c <= h) || (a <= h && c <= w) ||
+         (b <= w && c <= h) || (b <= h && c <= w);
 }
 
 }
