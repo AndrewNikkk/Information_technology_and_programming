@@ -6,6 +6,7 @@ public class ThirdTasks {
         System.out.println(sucsessShoot(0, 0, 5, 2, 2));
         System.out.println(parityAnalysis(3));
         System.out.println(rps("paper", "rock"));
+        System.out.println(bugger(999));
     }
 
     public static boolean isStrangePair(String firstStr, String secondStr) {
@@ -50,5 +51,24 @@ public class ThirdTasks {
             return secondWins;
         }
         return tie;
+    }
+
+    public static int bugger(int number) {
+        int counter = 0;
+        if (Integer.toString(number).length() == 1) {
+            return counter = 1;
+            
+        } else {
+            while (Integer.toString(number).length() > 1) {
+                counter += 1;
+                char[] numParts = Integer.toString(number).toCharArray();
+                int tempNum = 1;
+                for (char part : numParts) {
+                    tempNum *= Character.getNumericValue(part);
+                }
+                number = tempNum;
+            }
+        }
+        return counter;
     }
 }
