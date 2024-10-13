@@ -1,12 +1,16 @@
-import java.math.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ThirdTasks {
     public static void main(String[] args) {
         System.out.println(isStrangePair("ratio", "orator"));
+        System.out.println(Arrays.deepToString(sale(new String[][]{{"Laptop", "124200"}, {"Phone", "51450"}, {"Headphones", "13800"}}, 25)));
         System.out.println(sucsessShoot(0, 0, 5, 2, 2));
         System.out.println(parityAnalysis(3));
         System.out.println(rps("paper", "rock"));
         System.out.println(bugger(999));
+        System.out.println(longestUnique("abcba"));
     }
 
     public static boolean isStrangePair(String firstStr, String secondStr) {
@@ -17,6 +21,15 @@ public class ThirdTasks {
             return true;
         }
         return false;
+    }
+
+    public static String[][] sale(String[][] products, int discount) {
+        for (String[] product : products) {
+            int price = Integer.parseInt(product[1]);
+            int discountedPrice = (int) Math.max(1, Math.round(price * (1 - (discount / 100.0f))));
+            product[1] = String.valueOf(discountedPrice);
+        }
+        return products;
     }
 
     public static boolean sucsessShoot(int x, int y, int r, int n, int m) {
@@ -70,5 +83,25 @@ public class ThirdTasks {
             }
         }
         return counter;
+    }
+
+    public static String longestUnique(String str) {
+        String logest = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            StringBuilder current = new StringBuilder();
+            for (int j = i; j < str.length(); j++) {
+                char c = str.charAt(j);
+                if (current.toString().indexOf(c) == -1) {
+                    current.append(c);
+                    if (current.length() > logest.length()) {
+                        logest = current.toString();
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return logest;
     }
 }
