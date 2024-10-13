@@ -5,6 +5,7 @@ public class ThirdTasks {
         System.out.println(isStrangePair("ratio", "orator"));
         System.out.println(sucsessShoot(0, 0, 5, 2, 2));
         System.out.println(parityAnalysis(3));
+        System.out.println(rps("paper", "rock"));
     }
 
     public static boolean isStrangePair(String firstStr, String secondStr) {
@@ -39,4 +40,15 @@ public class ThirdTasks {
         return false;
     }
     
+    public static String rps(String playerFirst, String playerSecond) {
+        String firstWins = "Player 1 wins";
+        String secondWins = "Player 2 wins";
+        String tie = "Tie";
+        if ((playerFirst == "rock" && playerSecond == "scissors") || (playerFirst == "scissors" && playerSecond == "paper") || ((playerFirst == "paper" && playerSecond == "rock"))) {
+            return firstWins;
+        } else if ((playerSecond == "rock" && playerFirst == "scissors") || (playerSecond == "scissors" && playerFirst == "paper") || ((playerSecond == "paper" && playerFirst == "rock"))) {
+            return secondWins;
+        }
+        return tie;
+    }
 }
