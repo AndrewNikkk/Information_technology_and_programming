@@ -135,7 +135,7 @@ public class SecondTasks {
 
             int secondMarker = str.indexOf(marker, start);
             if (secondMarker == -1) {
-                result.append(start);
+                result.append(str.substring(start));
                 break;
             }
 
