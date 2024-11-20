@@ -17,7 +17,15 @@ public class FifthTask {
         System.out.println(memeSum(26, 39));
         System.out.println(memeSum(122, 81));
         System.out.println(memeSum(1222, 30277));
-    
+
+        System.out.println("--------------------------[ 3 ]--------------------------");
+
+        System.out.println(digitsCount(4666));
+        System.out.println(digitsCount(544));
+        System.out.println(digitsCount(121317));
+        System.out.println(digitsCount(0));
+        System.out.println(digitsCount(12345));
+        System.out.println(digitsCount(1289396387328L));    
     }
 
     public static boolean sameLetterPattern(String str1, String str2) {
@@ -68,6 +76,21 @@ public class FifthTask {
         result = Integer.parseInt(res.toString());
         return result;
         
+    }
+
+    public static int digitsCount(long count) {
+        int counter = 0;
+
+        if (count == 0) return 1;
+
+        count /= 10;
+        counter++;
+
+        if (count > 0) {
+            counter += digitsCount(count);
+        }
+
+        return counter;
     }
 }
 
