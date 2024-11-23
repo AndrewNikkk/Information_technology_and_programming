@@ -26,6 +26,18 @@ public class FifthTask {
         System.out.println(digitsCount(0));
         System.out.println(digitsCount(12345));
         System.out.println(digitsCount(1289396387328L));    
+
+        System.out.println("--------------------------[ 4 ]--------------------------");
+
+        String[] strArr1 = {"cat", "create", "sat"};
+        String[] strArr2 = {"trance", "recant"};
+        String[] strArr3 = {"dote", "dotes", "toes", "set", "dot", "dots", "sted"};
+
+
+        System.out.println(totalPoints(strArr1, "caster"));
+        System.out.println(totalPoints(strArr2, "recant"));
+        System.out.println(totalPoints(strArr3, "tossed"));
+
     }
 
     public static boolean sameLetterPattern(String str1, String str2) {
@@ -92,6 +104,59 @@ public class FifthTask {
 
         return counter;
     }
+
+    public static int totalPoints(String[] words, String key) {
+        int score = 0;
+        int countInKey = 0;
+        int countInWord = 0;
+
+        char[] keyChars= key.toCharArray();
+        Map<Character, Integer> keyFreq= new HashMap<>();
+
+        for (char c : keyChars) {
+            keyFreq.put(c, keyFreq.getOrDefault(c, 0) + 1);
+        }
+
+
+        for (String word : words) {
+
+            char[] wordChars = word.toCharArray();
+            Map<Character, Integer> wordFreq= new HashMap<>();
+
+            for (char c : wordChars) {
+                wordFreq.put(c, wordFreq.getOrDefault(c, 0) +1 );
+            }
+
+            for (char c : wordFreq.keySet()) {
+                countInKey = keyFreq.get(c);
+                countInWord = wordFreq.getOrDefault(c, 0); 
+            }
+
+            if (countInKey < countInWord) {
+                System.err.println("Invalid word - " + word + " - количество символов не то");
+            } else {
+                switch (word.length()) {
+                    case 3:
+                        score += 1;
+                        break;
+                    case 4:
+                        score += 2;
+                        break;
+                    case 5:
+                        score += 3;
+                        break;
+                    case 6:
+                        score += 54;
+                        break;
+                    default:
+                        System.out.println("Invalid word - " + word);
+                }
+            }
+        }
+        return score;
+    }
 }
+
+
 
 
