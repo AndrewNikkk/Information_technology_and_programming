@@ -60,6 +60,18 @@ public class FifthTask {
         System.out.println(takeDownAverage(avrArr2));
         System.out.println(takeDownAverage(avrArr3));
 
+        System.out.println("--------------------------[ 7 ]--------------------------");
+
+        System.out.println(canMove("Rook", "A8", "H8"));
+        System.out.println(canMove("Bishop", "A7", "G1"));
+        System.out.println(canMove("Queen", "C4", "D6"));
+
+        System.out.println("--------------------------[ 8 ]--------------------------");
+
+        System.out.println(maxPossible(9328, 456));
+        System.out.println(maxPossible(523, 76)); 
+        System.out.println(maxPossible(9132, 5564)); 
+        System.out.println(maxPossible(8732, 91255));
 
 
 
@@ -208,6 +220,48 @@ public class FifthTask {
         double newSum = newAvg * (count + 1);
         int newMark = (int) Math.round(newSum - sum);
         return newMark + "%";
+    }
+
+    public static boolean canMove(String piece, String start, String end) {
+        int startX = start.charAt(0) - 'A';
+        int startY = start.charAt(1) - '1';
+        int endX = end.charAt(0) - 'A';
+        int endY = end.charAt(1) - '1';
+
+        switch (piece.toLowerCase()) {
+            case "rook":
+                return startX == endX || startY == endY;
+            case "bishop":
+                return Math.abs(startX - endX) == Math.abs(startY - endY);
+            case "queen":
+                return canMove("rook", start, end) || canMove("bishop", start, end);
+            case "king":
+                return Math.abs(startX - endX) <= 1 && Math.abs(startY - endY) <= 1;
+            case "knight":
+                return (Math.abs(startX - endX) == 2 && Math.abs(startY - endY) == 1) ||
+                        (Math.abs(startX - endX) == 1 && Math.abs(startY - endY) == 2);
+            case "pawn":
+                return startX == endX && (endY - startY == 1 || (startY == 1 && endY - startY == 2));
+            default:
+                return false;
+        }
+    }
+
+    public static int maxPossible(int num1, int num2) {
+        char[] digits1 = String.valueOf(num1).toCharArray();
+        char[] digits2 = String.valueOf(num2).toCharArray();
+        
+        Arrays.sort(digits2);
+        
+        int index = digits2.length - 1;
+        for (int i = 0; i < digits1.length; i++) {
+            if (index >= 0 && digits1[i] < digits2[index]) {
+                digits1[i] = digits2[index];
+                index--;
+            }
+        }
+        
+        return Integer.parseInt(new String(digits1));
     }
 
 
