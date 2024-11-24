@@ -1,6 +1,11 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FifthTask {
@@ -73,6 +78,19 @@ public class FifthTask {
         System.out.println(maxPossible(9132, 5564)); 
         System.out.println(maxPossible(8732, 91255));
 
+        System.out.println("--------------------------[ 9 ]--------------------------");
+
+
+        System.out.println(timeDifference("Los Angeles", "April 1, 2011 23:23", "Canberra"));
+        System.out.println(timeDifference("London", "July 31, 1983 23:01", "Rome"));
+        System.out.println(timeDifference("New York", "December 31, 1970 13:40", "Beijing"));
+
+        System.out.println("--------------------------[ 10 ]--------------------------");
+
+        System.out.println(isNew(3));
+        System.out.println(isNew(30));
+        System.out.println(isNew(321));
+        System.out.println(isNew(123));
 
 
     }
@@ -264,7 +282,57 @@ public class FifthTask {
         return Integer.parseInt(new String(digits1));
     }
 
+    private static final Map<String, Integer> timeOffsets = new HashMap<>() {
+        {
+            put("Los Angeles", -8 * 60);
+            put("New York", -5 * 60);
+            put("Caracas", -4 * 60 - 30);
+            put("Buenos Aires", -3 * 60);
+            put("London", 0);
+            put("Rome", 1 * 60);
+            put("Moscow", 3 * 60);
+            put("Tehran", 3 * 60 + 30);
+            put("New Delhi", 5 * 60 + 30);
+            put("Beijing", 8 * 60);
+            put("Canberra", 10 * 60);
+        }
+    };
 
+    public static String timeDifference(String cityA, String timestamp, String cityB) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy HH:mm", Locale.US);
+        try {
+            Date date = sdf.parse(timestamp);
+            int offsetA = timeOffsets.get(cityA);
+            int offsetB = timeOffsets.get(cityB);
+            int timeDifference = offsetB - offsetA;
+            long newTimeInMillis = date.getTime() + timeDifference * 60 * 1000;
+            Date newDate = new Date(newTimeInMillis);
+            SimpleDateFormat resultFormat = new SimpleDateFormat("yyyy-M-d HH:mm");
+            return resultFormat.format(newDate);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    public static boolean isNew(int number) {
+        if (number < 10) {
+            return true;
+        }
+        
+        char[] currentDigits = String.valueOf(number).toCharArray();
+        Arrays.sort(currentDigits); 
+        
+        for (int i = 0; i < number; i++) {
+            char[] smallerDigits = String.valueOf(i).toCharArray();
+            Arrays.sort(smallerDigits);
+            
+            if (Arrays.equals(currentDigits, smallerDigits)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 
